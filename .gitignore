@@ -1,0 +1,18 @@
+# 编译产物
+*.exe
+*.pdb
+icon-build/
+harness.exe
+bugcheck.exe
+ocmig-test.exe
+
+# 旧版命令行脚本（已被图形界面取代）
+Move-OpenChamber.ps1
+Move-OpenChamber.cmd
+
+# 编辑器 / 系统
+.vs/
+.vscode/
+Thumbs.db
+desktop.ini
+*.tmp
