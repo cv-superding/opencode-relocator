@@ -1,5 +1,12 @@
 # OpenCode Relocator
 
+[![Release](https://img.shields.io/github/v/release/cv-superding/opencode-relocator?display_name=tag)](https://github.com/cv-superding/opencode-relocator/releases/latest)
+[![CI](https://github.com/cv-superding/opencode-relocator/actions/workflows/build.yml/badge.svg)](https://github.com/cv-superding/opencode-relocator/actions/workflows/build.yml)
+[![License: MIT](https://img.shields.io/github/license/cv-superding/opencode-relocator)](LICENSE)
+[![Platform](https://img.shields.io/badge/platform-Windows-0078D4?logo=windows&logoColor=white)](https://learn.microsoft.com/zh-cn/windows/)
+[![Language](https://img.shields.io/github/languages/top/cv-superding/opencode-relocator)](https://github.com/cv-superding/opencode-relocator)
+[![Downloads](https://img.shields.io/github/downloads/cv-superding/opencode-relocator/total)](https://github.com/cv-superding/opencode-relocator/releases)
+
 > 把 **OpenCode** / **OpenChamber** 桌面端从系统盘整体搬到其它磁盘 —— 原路径保留**目录联接（junction）**，更新、快捷方式、卸载照常工作。
 
 ![OpenCode Relocator 主界面](docs/screenshot-opencode.png)
@@ -27,6 +34,7 @@
 - [常见问题](#常见问题)
 - [已知限制](#已知限制)
 - [开发者](#开发者)
+- [参与贡献](#参与贡献)
 - [English](#english)
 - [许可证](#许可证)
 
@@ -225,6 +233,28 @@ E:\Apps\OpenCode\app                                        ← 真正的文件�
 - 目录遍历用 Win32 `FindFirstFileW` + `\\?\` 长路径前缀，跳过重解析点以防环
 - 进程路径用 `QueryFullProcessImageNameW` + `PROCESS_QUERY_LIMITED_INFORMATION`，比
   `Process.MainModule` 快得多，而且不受权限影响
+
+## 参与贡献
+
+欢迎提 issue 和 PR。上手很简单：源码只有一个文件，`.\build.ps1 -Test` 一条命令就能编译并跑完全部测试。
+
+```powershell
+git clone https://github.com/cv-superding/opencode-relocator.git
+cd opencode-relocator
+.\build.ps1 -Test
+```
+
+| 文件 | 用途 |
+|---|---|
+| [CONTRIBUTING.md](CONTRIBUTING.md) | 怎么编译、怎么加回归测试、怎么支持一个新应用 |
+| [SECURITY.md](SECURITY.md) | 安全性问题怎么私下报告；工具到底会对文件做什么、边界在哪 |
+| [CHANGELOG.md](CHANGELOG.md) | 更新日志 |
+| [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) | 行为准则 |
+| [.github/workflows/build.yml](.github/workflows/build.yml) | CI：Windows 上自动编译并跑测试 |
+| [.github/ISSUE_TEMPLATE/](.github/ISSUE_TEMPLATE) | 问题反馈 / 功能建议表单 |
+
+> 涉及**数据安全**的改动（迁移、回滚、校验流程），请先按 [SECURITY.md](SECURITY.md) 私下沟通，
+> 避免在公开 issue 里讨论还没修好的数据风险。
 
 ## English
 

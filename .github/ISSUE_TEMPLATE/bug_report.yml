@@ -1,0 +1,104 @@
+name: 报告问题
+description: 工具出错了，或者行为和预期不一样
+title: "[bug] "
+labels: [ "bug" ]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢反馈！涉及数据丢失或文件被改坏的问题请先看 [SECURITY.md](../blob/main/SECURITY.md) 的处理方式。
+
+  - type: input
+    id: version
+    attributes:
+      label: 工具版本
+      description: Release 页面上下载的版本号，例如 v1.0.0
+      placeholder: v1.0.0
+    validations:
+      required: true
+
+  - type: dropdown
+    id: os
+    attributes:
+      label: 系统
+      options:
+        - Windows 11
+        - Windows 10
+        - Windows 8.1
+        - Windows 7
+        - 其它
+    validations:
+      required: true
+
+  - type: input
+    id: scale
+    attributes:
+      label: 显示缩放
+      description: 例如 100% / 125% / 150%
+      placeholder: 125%
+    validations:
+      required: true
+
+  - type: dropdown
+    id: app
+    attributes:
+      label: 涉及哪个应用
+      options:
+        - OpenCode 桌面端
+        - OpenChamber
+        - 两个都涉及
+        - 其它 / 界面本身
+    validations:
+      required: true
+
+  - type: dropdown
+    id: stage
+    attributes:
+      label: 出问题的阶段
+      options:
+        - 打开工具时
+        - 选择目标目录 / 校验时
+        - 预览计划
+        - 迁移过程中
+        - 回滚时
+        - 迁移完成之后
+    validations:
+      required: true
+
+  - type: textarea
+    id: what
+    attributes:
+      label: 发生了什么
+      description: 期望的结果 vs 实际的结果
+    validations:
+      required: true
+
+  - type: textarea
+    id: log
+    attributes:
+      label: 界面日志区的内容
+      description: 界面右下角「日志」里的文字，复制粘贴即可
+      render: text
+    validations:
+      required: false
+
+  - type: textarea
+    id: repro
+    attributes:
+      label: 复现步骤
+      description: 勾了哪几项、目标目录填了什么、点了哪个按钮
+      render: text
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: 请确认
+      options:
+        - label: 我已经备份了重要数据
+          required: true
+        - label: 这是首次迁移（不是再次迁移）
+          required: false
+        - label: 我勾选了「保留旧副本」
+          required: false

@@ -1,0 +1,36 @@
+name: build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  windows:
+    name: Windows / .NET Framework 4.0 编译器
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 编译并运行全部测试
+        shell: pwsh
+        run: ./build.ps1 -Test
+
+      - name: 上传 OpenCodeRelocator.exe
+        uses: actions/upload-artifact@v4
+        with:
+          name: OpenCodeRelocator-${{ github.sha }}
+          path: OpenCodeRelocator.exe
+          if-no-files-found: error
+
+      - name: 确认工作区没有被编译产物弄脏
+        shell: pwsh
+        run: |
+          $dirty = git status --porcelain
+          if ($dirty) { Write-Output $dirty; exit 1 }
+          Write-Output "工作区干净"

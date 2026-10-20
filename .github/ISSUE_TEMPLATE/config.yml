@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 使用问题 / 迁移没成功
+    url: https://github.com/cv-superding/opencode-relocator/issues/new?template=bug_report.yml
+    about: 工具报错、迁移失败、回滚不生效等问题请用「报告问题」模板
+  - name: 功能建议
+    url: https://github.com/cv-superding/opencode-relocator/issues/new?template=feature_request.yml
+    about: 想加的功能、想改的界面
+  - name: 安全性问题（数据可能丢失）
+    url: https://github.com/cv-superding/opencode-relocator/security/advisories/new
+    about: 涉及数据丢失或文件被改坏的问题请私下报告，不要公开提 issue
